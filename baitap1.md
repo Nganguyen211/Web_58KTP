@@ -64,5 +64,7 @@ Chuột phải References → Add Reference → chọn MyLib.
 Bước 3: Tạo file API
 Chuột phải AppWeb → Add → Web Form → đặt tên api.aspx.
 Trong api.aspx để nội dung rỗng:
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="api.aspx.cs" Inherits="AppWeb.api" %>
+
 
 
