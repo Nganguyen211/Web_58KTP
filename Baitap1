@@ -13,5 +13,9 @@ phải có dấu án cá nhân; keyword: c# window Desktop => Windows Form Appli
 
 BÀI LÀM :
  *) DLL đa năng 
-Trong Solution → Add → New Project → Class Library (.NET Framework) → đặt tên MyLib.
+Mở Visual Studio → File → New → Project.
+Chọn loại: Class Library (.NET Framework) → đặt tên MyLib.
+Chọn đường dẫn lưu → Create.
+Mặc định sẽ có file Class1.cs, đổi tên thành MultiplicationTable.cs.
+
 
