@@ -173,11 +173,34 @@ Tải: https://nodejs.org/dist/v20.19.5/node-v20.19.5-x64.msi
 Cài vào: D:\nodejs
 node -v  → v20.19.5
 npm -v
-![Uploading image.png…]()
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/05f3cb66-963f-4847-aaef-064c610e046f" />
 
 2.2. Cài Node-RED
 cd /d D:\nodejs
 npm install -g --unsafe-perm node-red --prefix "D:\nodejs\nodered"
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0088e58e-3dba-4a9e-91c5-2687ec442fbb" />
+
+2.3. Tải NSSM
+
+Link: https://nssm.cc/release/nssm-2.24.zip
+Giải nén → copy nssm.exe (64-bit) vào: D:\nodejs\nodered\
+
+2.4. Tạo file run-nodered.cmd
+Tạo file: D:\nodejs\nodered\run-nodered.cmd
+@echo off
+REM fix path
+set PATH=D:\nodejs;%PATH%
+REM Run Node-RED
+node "D:\nodejs\nodered\node_modules\node-red\red.js" -u "D:\nodejs\nodered\work" %*
+
+![Uploading image.png…]()
+
+2.5. Cài service Node-RED
+cd /d D:\nodejs\nodered
+nssm.exe install a1-nodered "D:\nodejs\nodered\run-nodered.cmd"
+
+Cửa sổ hiện ra → OK
+
 
 
 
