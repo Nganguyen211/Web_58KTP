@@ -166,7 +166,7 @@ httpd.exe -k start
 Truy cập: http://ngyenthihangnga.com → thấy "index" là thành công
 
 BƯỚC 2: CÀI NODEJS & NODERED
-2.1. Cài Node.js
+* Cài Node.js
 
 Tải: https://nodejs.org/dist/v20.19.5/node-v20.19.5-x64.msi
 
@@ -175,31 +175,35 @@ node -v  → v20.19.5
 npm -v
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/05f3cb66-963f-4847-aaef-064c610e046f" />
 
-2.2. Cài Node-RED
+* Cài Node-RED
 cd /d D:\nodejs
 npm install -g --unsafe-perm node-red --prefix "D:\nodejs\nodered"
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0088e58e-3dba-4a9e-91c5-2687ec442fbb" />
 
-2.3. Tải NSSM
+* Tải NSSM
 
 Link: https://nssm.cc/release/nssm-2.24.zip
 Giải nén → copy nssm.exe (64-bit) vào: D:\nodejs\nodered\
 
-2.4. Tạo file run-nodered.cmd
+* Tạo file run-nodered.cmd
 Tạo file: D:\nodejs\nodered\run-nodered.cmd
 @echo off
 REM fix path
 set PATH=D:\nodejs;%PATH%
 REM Run Node-RED
 node "D:\nodejs\nodered\node_modules\node-red\red.js" -u "D:\nodejs\nodered\work" %*
+<img width="1920" height="1080" alt="Screenshot (8)" src="https://github.com/user-attachments/assets/777baf36-2fdf-4fcb-af5c-c213b48c553f" />
 
-![Uploading image.png…]()
 
-2.5. Cài service Node-RED
+* Cài service Node-RED
 cd /d D:\nodejs\nodered
 nssm.exe install a1-nodered "D:\nodejs\nodered\run-nodered.cmd"
+<img width="1920" height="2560" alt="image" src="https://github.com/user-attachments/assets/05353c4e-9e58-4c5b-97ba-29d7b94df26b" />
 
 Cửa sổ hiện ra → OK
+Cài đặt thành công 
+<img width="1920" height="1080" alt="Screenshot 2025-11-04 184339" src="https://github.com/user-attachments/assets/e0f4f0ba-8ca5-452a-9e68-29c89f375869" />
+
 
 
 
