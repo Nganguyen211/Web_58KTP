@@ -227,9 +227,10 @@ node-red-contrib-duckdns
 node-red-contrib-cron-plus
 
 <img width="1037" height="474" alt="image" src="https://github.com/user-attachments/assets/c96bd700-c85c-4901-8020-5c5f5e45bae9" />
-Cài đặt thành công cáhv nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
+Cài đặt thành công cách nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
 
-2.5 va 2.6 Do máy lag và code bị sai em chưa khắc phục được nên chưa hoàn thành 2 phần này em sẽ nhanh chóng hoàn thiện 2 phần này mong thầy thông cảm và tạo điều kiện cho em ạ 
+2.5 va 2.6 Do máy lag và code bị sai em chưa khắc phục được nên chưa hoàn thành 2 phần này em sẽ nhanh chóng hoàn thiện 2 phần này mong thầy thông cảm và tạo điều kiện cho em ạ
+
 2.5. tạo api back-end bằng nodered:
 Khi gọi, Node-RED sẽ truy vấn bảng Hocvien trong SQL Server
 
