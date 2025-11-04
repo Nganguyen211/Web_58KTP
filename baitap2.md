@@ -239,7 +239,10 @@ node-red-contrib-cron-plus
 - Lúc này Node-RED sẽ yêu cầu đăng nhập bằng user admin và password mới vào được giao diện cho admin tại: http://localhost:1880
 ![Uploading image.png…]()
 
-2.5 và 2.6 do máy chậm code bị lỗi bị sập máy nên chưa kịp khắc phục và bổ sung hoàn thành em sẽ hoàn thành nhanh cóng mong thầy thong cảm ạ 
+
+
+2.5 và 2.6 do máy chậm code bị lỗi bị sập máy nên chưa kịp khắc phục và bổ sung hoàn thành em sẽ hoàn thành nhanh cóng mong thầy thông cảm ạ 
+
 2.5. tạo api back-end bằng nodered:
 Tạo API tìm kiếm nhà nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
 Khi gọi, Node-RED sẽ truy vấn bảng Hocvien trong SQL Server
