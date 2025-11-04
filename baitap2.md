@@ -216,7 +216,7 @@ Table_Name: HocVien, Lop, KetQua
 2.4. Cài đặt thư viện trên nodered:
 - Truy cập giao diện nodered bằng url: http://localhost:1880 trên trình duyệt. Nếu đã cài service a1-nodered sẽ có giao diện flow editor.
 - <img width="1911" height="1052" alt="image" src="https://github.com/user-attachments/assets/cdebce88-c3aa-4b95-986f-c34b681e1fd5" />
-- Cài đặt các thư viện cần thiết: Tại giao diện Node-RED ➡️ Vào Menu ➡️ Manage palette ➡️ Install tiến hành cài đặt lần lượt theo các thư viện bên dưới.
+- Cài đặt các thư viện cần thiết: Tại giao diện Node-RED Vào Menu -> Manage palette ->Install tiến hành cài đặt lần lượt theo các thư viện bên dưới.
   
 node-red-contrib-mssql-plus
 node-red-node-mysql
@@ -241,16 +241,17 @@ node-red-contrib-cron-plus
 - Lúc này Node-RED sẽ yêu cầu đăng nhập bằng user admin và password mới vào được giao diện cho admin tại: http://localhost:1880
   <img width="1039" height="465" alt="image" src="https://github.com/user-attachments/assets/67957d6e-9939-436d-90fc-49ec6e688712" />
   
-  2.5. tạo api back-end bằng nodered:
+2.5. tạo api back-end bằng nodered:
 Tạo API tìm kiếm nhà nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
 Khi gọi, Node-RED sẽ truy vấn bảng Hocvien trong SQL Server
-Trả về dữ liệu dạng JSON (danh sách nhà phù hợp với từ khóa tìm kiếm).
+Trả về dữ liệu dạng JSON (danh sách  phù hợp với từ khóa tìm kiếm).
 Trên Nodered, ở flow 1 sử dụng http in và http response để tạo api
 Thêm node MSSQL để kết nối và truy vấn tới cơ sở dữ liệu
 Logic Flow sẽ gồm 4 node sau (thứ tự nối dây):
 Cấu hình từng node trong Node-RED
 - http in : dùng GET cho đơn giản, URL đặt tuỳ ý, ví dụ: /timkiem
-
+  
+2.6. Tạo giao diện front-end:
 
 2.7. Nhận xét bài làm của mình:
  * Qua quá trình thực hiện bài tập này, em đã hiểu rõ hơn về quy trình cài đặt, cấu hình và tích hợp các thành phần trong một hệ thống web hoàn chỉnh.
