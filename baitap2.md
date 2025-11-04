@@ -206,6 +206,74 @@ nssm.exe install a1-nodered "D:\nodejs\nodered\run-nodered.cmd"
 Cửa sổ hiện ra → OK
 Cài đặt thành công 
 <img width="1920" height="1080" alt="Screenshot 2025-11-04 184339" src="https://github.com/user-attachments/assets/e0f4f0ba-8ca5-452a-9e68-29c89f375869" />
+2.3. Tạo csdl tuỳ ý trên mssql (sql server 2022), nhớ các thông số kết nối: ip, port, username, password, db_name, table_name
+Port: 1433
+Username: 
+Password: 123456
+DB_Name: qlhv_nodered
+Table_Name: HocVien, Lop, KetQua
+
+2.4. Cài đặt thư viện trên nodered:
+- Truy cập giao diện nodered bằng url: http://localhost:1880 trên trình duyệt. Nếu đã cài service a1-nodered sẽ có giao diện flow editor.
+- <img width="1911" height="1052" alt="image" src="https://github.com/user-attachments/assets/cdebce88-c3aa-4b95-986f-c34b681e1fd5" />
+- Cài đặt các thư viện cần thiết: Tại giao diện Node-RED ➡️ Vào Menu ➡️ Manage palette ➡️ Install tiến hành cài đặt lần lượt theo các thư viện bên dưới.
+  
+node-red-contrib-mssql-plus
+node-red-node-mysql
+node-red-contrib-telegrambot
+node-red-contrib-moment
+node-red-contrib-influxdb
+node-red-contrib-duckdns
+node-red-contrib-cron-plus
+
+<img width="1042" height="473" alt="image" src="https://github.com/user-attachments/assets/480cef30-a9ad-4413-a58f-b2367a055a7b" />
+
+- Cấu hình tài khoản đăng nhập (adminAuth) mở file D:\nodejs\nodered\work\settings.js tìm đến chỗ adminAuth, bỏ comment // ở đầu dòng (8 dòng), thay chuỗi mã hoá mật khẩu bằng chuỗi mới.
+
+<img width="1168" height="366" alt="image" src="https://github.com/user-attachments/assets/a4688122-205c-4852-944f-ecd65397701d" />
+
+<img width="986" height="261" alt="image" src="https://github.com/user-attachments/assets/d8ab651b-832a-4788-8cf9-e3ab7a74f901" />
+
+- Khởi động lại Node-RED bằng cách: mở cmd, vào thư mục :\nodejs\nodered và chạy lệnh nssm restart a1-nodered
+
+<img width="1100" height="261" alt="image" src="https://github.com/user-attachments/assets/9a91aec3-2e98-4ac2-bb22-d0602d81c48f" />
+
+- Lúc này Node-RED sẽ yêu cầu đăng nhập bằng user admin và password mới vào được giao diện cho admin tại: http://localhost:1880
+  <img width="1039" height="465" alt="image" src="https://github.com/user-attachments/assets/67957d6e-9939-436d-90fc-49ec6e688712" />
+  
+  2.5. tạo api back-end bằng nodered:
+Tạo API tìm kiếm nhà nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
+Khi gọi, Node-RED sẽ truy vấn bảng Hocvien trong SQL Server
+Trả về dữ liệu dạng JSON (danh sách nhà phù hợp với từ khóa tìm kiếm).
+Trên Nodered, ở flow 1 sử dụng http in và http response để tạo api
+Thêm node MSSQL để kết nối và truy vấn tới cơ sở dữ liệu
+Logic Flow sẽ gồm 4 node sau (thứ tự nối dây):
+Cấu hình từng node trong Node-RED
+- http in : dùng GET cho đơn giản, URL đặt tuỳ ý, ví dụ: /timkiem
+
+
+2.7. Nhận xét bài làm của mình:
+ * Qua quá trình thực hiện bài tập này, em đã hiểu rõ hơn về quy trình cài đặt, cấu hình và tích hợp các thành phần trong một hệ thống web hoàn chỉnh.
+
+- Về cài đặt phần mềm và thư viện:
+Em đã nắm được cách cài đặt và cấu hình Node.js, Node-RED, SQL Server, Apache, cũng như cách thêm các thư viện mở rộng (node-red-contrib-mssql-plus, node-red-node-mysql, node-red-contrib-telegrambot, moment, v.v...) vào Node-RED.
+Qua đó, em hiểu được vai trò của từng phần mềm trong hệ thống: Node-RED xử lý logic, SQL lưu dữ liệu, Apache hiển thị giao diện người dùng.
+
+- Về tạo API back-end bằng Node-RED:
+Em đã biết cách sử dụng các node HTTP In, Function, MSSQL, và HTTP Response để xây dựng một API hoàn chỉnh.
+Em hiểu cách xử lý tham số truy vấn từ client, gửi câu lệnh SQL đến cơ sở dữ liệu, và trả kết quả dạng JSON về cho phía front-end. Việc này giúp em hình dung rõ hơn cách một API hoạt động thực tế.
+
+- Về tương tác giữa front-end và back-end:
+Em đã biết cách dùng JavaScript (fetch API) trên giao diện web để gửi yêu cầu đến Node-RED API, nhận dữ liệu JSON trả về và hiển thị kết quả lên giao diện.
+Nhờ đó, em hiểu rõ mối liên hệ giữa giao diện người dùng (front-end) và xử lý dữ liệu phía máy chủ (back-end).
+
+*Tự đánh giá:
+Bài làm giúp em củng cố kiến thức về mô hình client–server, API, cơ sở dữ liệu, và tích hợp hệ thống. Mặc dù còn một số bước cần tìm hiểu thêm về bảo mật và tối ưu, nhưng nhìn chung em đã hiểu được toàn bộ quy trình xây dựng một ứng dụng web hoàn chỉnh từ đầu đến cuối.Ngoài ra còn một số phần em chưa thực hiện dược do máy lag ạ
+
+
+
+
+
 
 
 
