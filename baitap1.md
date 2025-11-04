@@ -31,6 +31,7 @@ Mặc định sẽ có file Class1.cs, đổi tên thành MultiplicationTable.cs
 Bước 1: Tạo Project Console
 File → New → Project.
 Chọn Console App (.NET Framework), đặt tên AppConsole.
+
 Bước 2: Thêm tham chiếu đến DLL
 Trong Solution Explorer → chuột phải vào References → Add Reference.
 Chọn Projects → tick vào MyLib (hoặc Browse đến file MyLib.dll).
@@ -45,8 +46,10 @@ Chạy ->nhập số -> in bảng cửu chương
 Bước 1: Tạo Project WinForm
 File → New → Project.
 Chọn Windows Forms App (.NET Framework) → đặt tên AppWinForm.
+
 Bước 2: Thêm DLL
 Giống bước trên: chuột phải References → Add Reference → chọn MyLib.
+
 Bước 3: Thiết kế Form
 Thêm TextBox (Name = txtInput).
 Thêm Button (Name = btnGenerate, Text = “Sinh bảng”).
@@ -65,8 +68,10 @@ Bước 1: Tạo Project Web Forms
 File → New → Project.
 Chọn ASP.NET Web Application (.NET Framework) → đặt tên AppWeb.
 Chọn template Empty + tick Web Forms.
+
 Bước 2: Thêm DLL
 Chuột phải References → Add Reference → chọn MyLib.
+
 Bước 3: Tạo file API
 Chuột phải AppWeb → Add → Web Form → đặt tên api.aspx.
 Trong api.aspx để nội dung rỗng:
