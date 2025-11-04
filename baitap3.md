@@ -54,3 +54,26 @@ CÁCH ĐÁNH GIÁ:
 4. nodered api trả về json, test được: 2đ
 5. front-end có js gọi được api nodered, nhận về json, hiển thị được kết quả từ json này. 2đ
 6. Bài làm có dấu ấn, giải thích rõ ràng, hiểu vấn đề: 2đ
+
+
+BÀI LÀM
+1. CÀI ĐẶT MÔI TRƯỜNG LINUX
+✅ Cách dễ nhất (nên chọn):
+
+Trên Windows 10/11:
+bash:
+wsl --install
+
+<img width="1920" height="1080" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/c697f7ac-de7f-4e3f-9d4d-37f0dd3527d4" />
+
+wsl --set-default-version 2
+wsl --install -d Ubuntu
+
+<img width="1920" height="1080" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/48f7094e-5786-4a8d-b58b-28383f75f9f9" />
+
+Sau khi cài xong, chạy:
+sudo apt update && sudo apt upgrade -y
+sudo apt install docker.io docker-compose -y
+sudo usermod -aG docker $USER
+Rồi khởi động lại WSL.
+2. FILE docker-compose.yml
