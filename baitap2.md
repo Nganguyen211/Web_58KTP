@@ -227,24 +227,7 @@ node-red-contrib-duckdns
 node-red-contrib-cron-plus
 
 <img width="1037" height="474" alt="image" src="https://github.com/user-attachments/assets/c96bd700-c85c-4901-8020-5c5f5e45bae9" />
- Cài đặt thành công các thư viện ✅
-- Cấu hình tài khoản đăng nhập (adminAuth) mở file E:\nodejs\nodered\work\settings.js tìm đến chỗ adminAuth, bỏ comment // ở đầu dòng (8 dòng), thay chuỗi mã hoá mật khẩu bằng chuỗi mới.
-  <img width="1168" height="366" alt="image" src="https://github.com/user-attachments/assets/8dd4288a-bfb1-49e0-9f71-b22aa8979139" />
-  <img width="986" height="216" alt="image" src="https://github.com/user-attachments/assets/fd1e6e8b-fdb3-429c-a85c-828482db9a5c" />
- Truy cập tool: https://tms.tnut.edu.vn/pw.php ➡️ Nhập password: chuoimahoamatkhau vào ô và click Hash Password ➡️ Copy chuỗi mã hóa dán vào chỗ "chuoi_ma_hoa_mat_khau" và lưu file.
-
-<img width="1160" height="361" alt="image" src="https://github.com/user-attachments/assets/d94a68e5-e488-42ff-bbb0-62a5da0cb017" />
-- Khởi động lại Node-RED bằng cách: mở cmd, vào thư mục E:\nodejs\nodered và chạy lệnh nssm restart a1-nodered
-<img width="1100" height="261" alt="image" src="https://github.com/user-attachments/assets/d33f7943-a35b-4104-800f-6f72435998ee" />
-- Lúc này Node-RED sẽ yêu cầu đăng nhập bằng user admin và password mới vào được giao diện cho admin tại: http://localhost:1880
-![Uploading image.png…]()
-
-
-
-2.5 và 2.6 do máy chậm code bị lỗi bị sập máy nên chưa kịp khắc phục và bổ sung hoàn thành em sẽ hoàn thành nhanh chóng mong thầy thông cảm ạ 
-
-2.5. tạo api back-end bằng nodered:
-Tạo API tìm kiếm nhà nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
+ Cài đặt thành công cáhv nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
 
 Khi gọi, Node-RED sẽ truy vấn bảng Hocvien trong SQL Server
 
