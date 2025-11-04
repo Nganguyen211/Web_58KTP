@@ -241,14 +241,19 @@ node-red-contrib-cron-plus
 
 
 
-2.5 và 2.6 do máy chậm code bị lỗi bị sập máy nên chưa kịp khắc phục và bổ sung hoàn thành em sẽ hoàn thành nhanh cóng mong thầy thông cảm ạ 
+2.5 và 2.6 do máy chậm code bị lỗi bị sập máy nên chưa kịp khắc phục và bổ sung hoàn thành em sẽ hoàn thành nhanh chóng mong thầy thông cảm ạ 
 
 2.5. tạo api back-end bằng nodered:
 Tạo API tìm kiếm nhà nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
+
 Khi gọi, Node-RED sẽ truy vấn bảng Hocvien trong SQL Server
+
 Trả về dữ liệu dạng JSON (danh sách hv phù hợp với từ khóa tìm kiếm).
+
 Trên Nodered, ở flow 1 sử dụng http in và http response để tạo api
+
 Thêm node MSSQL để kết nối và truy vấn tới cơ sở dữ liệu
+
 Logic Flow sẽ gồm 4 node sau (thứ tự nối dây):
 
 2.7. Nhận xét bài làm của mình:
@@ -264,6 +269,7 @@ Em hiểu cách xử lý tham số truy vấn từ client, gửi câu lệnh SQL
 
 - Về tương tác giữa front-end và back-end:
 Em đã tìm hiểu và hiểu cách dùng JavaScript (fetch API) trên giao diện web để gửi yêu cầu đến Node-RED API, nhận dữ liệu JSON trả về và hiển thị kết quả lên giao diện.Tuy nhiên do bị lỗi máy và code lỗi em chưa khắc phục được nên chưa hoàn chỉnh được bài đúng yêu cầu
+
 *Tự đánh giá:
 Bài làm giúp em củng cố kiến thức về mô hình client–server, API, cơ sở dữ liệu, và tích hợp hệ thống. Mặc dù còn một số bước cần tìm hiểu thêm về bảo mật và tối ưu, nhưng nhìn chung em đã hiểu được toàn bộ quy trình xây dựng một ứng dụng web hoàn chỉnh từ đầu đến cuối.Ngoài ra còn một số phần em chưa thực hiện dược do máy chậm và lỗi 
 
