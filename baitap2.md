@@ -269,7 +269,7 @@ Em đã biết cách dùng JavaScript (fetch API) trên giao diện web để g�
 Nhờ đó, em hiểu rõ mối liên hệ giữa giao diện người dùng (front-end) và xử lý dữ liệu phía máy chủ (back-end).
 
 *Tự đánh giá:
-Bài làm giúp em củng cố kiến thức về mô hình client–server, API, cơ sở dữ liệu, và tích hợp hệ thống. Mặc dù còn một số bước cần tìm hiểu thêm về bảo mật và tối ưu, nhưng nhìn chung em đã hiểu được toàn bộ quy trình xây dựng một ứng dụng web hoàn chỉnh từ đầu đến cuối.Ngoài ra còn một số phần em chưa thực hiện dược do máy lag ạ
+Bài làm giúp em củng cố kiến thức về mô hình client–server, API, cơ sở dữ liệu, và tích hợp hệ thống. Mặc dù còn một số bước cần tìm hiểu thêm về bảo mật và tối ưu, nhưng nhìn chung em đã hiểu được toàn bộ quy trình xây dựng một ứng dụng web hoàn chỉnh từ đầu đến cuối.Ngoài ra còn một số phần em chưa thực hiện dược do máy chậm và lỗi 
 
 
 
