@@ -101,7 +101,9 @@ DEADLINE: 26/10/2025
 
 
 BÀI LÀM 
+
 BƯỚC 1: CÀI ĐẶT APACHE WEB SERVER
+
 1.1. Tắt IIS (nếu có)
 cmdiisreset /stop
 <img width="1103" height="639" alt="image" src="https://github.com/user-attachments/assets/b05fa8e9-7caa-49da-9175-3ca92af3eca8" />
@@ -115,6 +117,7 @@ Giải nén vào: D:\Apache24
 
 1.3. Tạo thư mục web
 D:\Apache24\nguyenthihangnga
+
 1.4. Sửa file httpd.conf
 Mở: D:\Apache24\conf\httpd.conf
 Tìm và sửa:
