@@ -27,6 +27,7 @@ Mặc định sẽ có file Class1.cs, đổi tên thành MultiplicationTable.cs
 <img width="1920" height="1020" alt="Screenshot 2025-09-17 154806" src="https://github.com/user-attachments/assets/e691436f-9ae7-40c5-b41c-2bc8899ce2d0" />
 
 *) Console App sử dụng DLL
+
 Bước 1: Tạo Project Console
 File → New → Project.
 Chọn Console App (.NET Framework), đặt tên AppConsole.
@@ -40,6 +41,7 @@ Chạy ->nhập số -> in bảng cửu chương
 <img width="1920" height="1022" alt="image" src="https://github.com/user-attachments/assets/359768e2-de54-44cd-a53c-12107d203ac5" />
 
 *)Windows Form sử dụng DLL
+
 Bước 1: Tạo Project WinForm
 File → New → Project.
 Chọn Windows Forms App (.NET Framework) → đặt tên AppWinForm.
@@ -58,6 +60,7 @@ Thêm ListBox (Name = lstResult).
 <img width="1920" height="1020" alt="Screenshot 2025-09-28 200816" src="https://github.com/user-attachments/assets/c73f9dd7-7cf0-4322-a076-7b5e00d9220d" />
 
 *)Web App sử dụng DLL
+
 Bước 1: Tạo Project Web Forms
 File → New → Project.
 Chọn ASP.NET Web Application (.NET Framework) → đặt tên AppWeb.
