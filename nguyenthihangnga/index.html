@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tra Cứu Học Viên </title>
+  <link rel="stylesheet" href="nguyenthihangnga.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">DDC</div>
+      <h1>Tra Cứu Học Viên</h1>
+      <p class="author">by <strong>nguyenthihangnga</strong></p>
+    </header>
+
+    <main>
+      <form id="searchForm" class="search-form">
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="query" 
+            placeholder="Nhập tên, mã HV, lớp..." 
+            autocomplete="off"
+            required 
+          />
+          <button type="submit">Tìm</button>
+        </div>
+      </form>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Đang tìm kiếm...</p>
+      </div>
+
+      <div id="result"></div>
+    </main>
+
+    <footer>
+      <p>© 2025 <strong>Tracuuthongtin</strong> – Apache + Node-RED + SQL Server</p>
+    </footer>
+  </div>
+
+  <script src="nguyenthihangnga.js"></script>
+</body>
+</html>

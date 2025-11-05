@@ -1,0 +1,83 @@
+[
+    {
+        "id": "a1b2c3d4e5f6g7h8",
+        "type": "tab",
+        "label": "Flow 1 - API Tim Kiem",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "http_in_timkiem",
+        "type": "http in",
+        "z": "a1b2c3d4e5f6g7h8",
+        "name": "HTTP IN /timkiem",
+        "url": "/timkiem",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 140,
+        "wires": [["func_sql"]]
+    },
+    {
+        "id": "func_sql",
+        "type": "function",
+        "z": "a1b2c3d4e5f6g7h8",
+        "name": "Tạo truy vấn SQL",
+        "func": "// Lấy tham số từ URL\nvar tukhoa = msg.req.query.q || '';\n\n// Tạo câu truy vấn tìm kiếm học viên\nmsg.payload = `\n    SELECT * FROM HocVien\n    WHERE TenHocVien LIKE N'%${tukhoa}%'\n       OR DiaChi LIKE N'%${tukhoa}%'\n       OR GioiTinh LIKE N'%${tukhoa}%'\n`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 140,
+        "wires": [["mssql_query"]]
+    },
+    {
+        "id": "mssql_query",
+        "type": "MSSQL",
+        "z": "a1b2c3d4e5f6g7h8",
+        "mssqlCN": "conn_mssql",
+        "name": "Truy vấn SQL Server",
+        "query": "",
+        "outField": "payload",
+        "returnType": 0,
+        "throwErrors": 1,
+        "x": 600,
+        "y": 140,
+        "wires": [["http_response"]]
+    },
+    {
+        "id": "http_response",
+        "type": "http response",
+        "z": "a1b2c3d4e5f6g7h8",
+        "name": "HTTP Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 820,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "conn_mssql",
+        "type": "MSSQL-CN",
+        "name": "Kết nối qlhv_nodered",
+        "server": "DESKTOP-P15R9MR\\MSSQL2019",
+        "port": "1433",
+        "encyption": false,
+        "trustServerCertificate": true,
+        "database": "qlhv_nodered",
+        "useUTC": false,
+        "connectTimeout": "15000",
+        "requestTimeout": "15000",
+        "cancelTimeout": "5000",
+        "pool": "5",
+        "parseJSON": true,
+        "enableArithAbort": true,
+        "credentials": {
+            "user": "sa",
+            "password": "123456@"
+        }
+    }
+]
