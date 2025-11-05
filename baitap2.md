@@ -5,41 +5,6 @@ NGÀY GIAO: 19/10/2025
 DEADLINE: 26/10/2025
 ==============================
 
-2.3. Tạo csdl tuỳ ý trên mssql (sql server 2022), nhớ các thông số kết nối: ip, port, username, password, db_name, table_name
-2.4. Cài đặt thư viện trên nodered:
-- truy cập giao diện nodered bằng url: http://localhost:1880
-- cài đặt các thư viện: node-red-contrib-mssql-plus, node-red-node-mysql, node-red-contrib-telegrambot, node-red-contrib-moment, node-red-contrib-influxdb, node-red-contrib-duckdns, node-red-contrib-cron-plus
-- Sửa file `D:\nodejs\nodered\work\settings.js` : 
-  tìm đến chỗ adminAuth, bỏ comment # ở đầu dòng (8 dòng), thay chuỗi mã hoá mật khẩu bằng chuỗi mới
-    adminAuth: {
-        type: "credentials",
-        users: [{
-            username: "admin",
-            password: "chuỗi_mã_hoá_mật_khẩu",
-            permissions: "*"
-        }]
-    },   
-   với mã hoá mật khẩu có thể thiết lập bằng tool: https://tms.tnut.edu.vn/pw.php
-- chạy lại nodered bằng cách: mở cmd, vào thư mục `D:\nodejs\nodered` và chạy lệnh `nssm restart a1-nodered`
-  khi đó nodered sẽ yêu cầu nhập mật khẩu mới vào được giao diện cho admin tại: http://localhost:1880
-2.5. tạo api back-end bằng nodered:
-- tại flow1 trên nodered, sử dụng node `http in` và `http response` để tạo api
-- thêm node `MSSQL` để truy vấn tới cơ sở dữ liệu
-- logic flow sẽ gồm 4 node theo thứ tự sau (thứ tự nối dây): 
-  1. http in  : dùng GET cho đơn giản, URL đặt tuỳ ý, ví dụ: /timkiem
-  2. function : để tiền xử lý dữ liệu gửi đến
-  3. MSSQL: để truy vấn dữ liệu tới CSDL, nhận tham số từ node tiền xử lý
-  4. http response: để phản hồi dữ liệu về client: Status Code=200, Header add : Content-Type = application/json
-  có thể thêm node `debug` để quan sát giá trị trung gian.
-- test api thông qua trình duyệt, ví dụ: http://localhost:1880/timkiem?q=thị
-2.6. Tạo giao diện front-end:
-- html form gồm các file : index.html, fullname.js, fullname.css
-  cả 3 file này đặt trong thư mục: `D:\Apache24\fullname`
-  nhớ thay fullname là tên của bạn, viết liền, ko dấu, chữ thường, vd tên là Đỗ Duy Cốp thì fullname là `doduycop`
-  khi đó 3 file sẽ là: index.html, doduycop.js và doduycop.css
-- index.html và fullname.css: trang trí tuỳ ý, có dấu ấn cá nhân, có form nhập được thông tin.
-- fullname.js: lấy dữ liệu trên form, gửi đến api nodered đã làm ở bước 2.5, nhận về json, dùng json trả về để tạo giao diện phù hợp với kết quả truy vấn của bạn.
-
 
 
 BÀI LÀM 
@@ -220,6 +185,16 @@ Logic Flow sẽ gồm 4 node sau (thứ tự nối dây):
 
 <img width="769" height="699" alt="image" src="https://github.com/user-attachments/assets/1b3c479b-e0bd-4986-84e8-44dd2f3ff93c" />
 
+2.6. Tạo giao diện front-end:
+
+html form gồm các file : index.html, fullname.js, fullname.css
+
+  cả 3 file này đặt trong thư mục: D:\Apache24\nguyenthihangnga
+  
+  khi đó 3 file sẽ là: index.html,nguyenthihangnga.js và nguyenthihangnga.css
+
+<img width="1298" height="989" alt="image" src="https://github.com/user-attachments/assets/34143d05-268d-49be-a696-514d2ec29406" />
+
 2.7. Nhận xét bài làm của mình:
  * Qua quá trình thực hiện bài tập này, em đã hiểu rõ hơn về quy trình cài đặt, cấu hình và tích hợp các thành phần trong một hệ thống web hoàn chỉnh.
 
@@ -229,7 +204,7 @@ Qua đó, em hiểu được vai trò của từng phần mềm trong hệ thố
 
 - Về tạo API back-end bằng Node-RED:
 Em đã biết cách sử dụng các node HTTP In, Function, MSSQL, và HTTP Response để xây dựng một API hoàn chỉnh.
-Em hiểu cách xử lý tham số truy vấn từ client, gửi câu lệnh SQL đến cơ sở dữ liệu, và trả kết quả dạng JSON về cho phía front-end. Việc này giúp em hình dung rõ hơn cách một API hoạt động thực tế.Tuy nhiên do bị lỗi máy và code lỗi em chưa tìm được khắc phục nên chưa hoàn chỉnh được bài đúng yêu cầut
+Em hiểu cách xử lý tham số truy vấn từ client, gửi câu lệnh SQL đến cơ sở dữ liệu, và trả kết quả dạng JSON về cho phía front-end. Việc này giúp em hình dung rõ hơn cách một API hoạt động thực tế.Tuy nhiên do bị lỗi máy và code lỗi em chưa tìm được khắc phục nên chưa hoàn chỉnh được bài đúng yêu cầu
 
 - Về tương tác giữa front-end và back-end:
 Em đã tìm hiểu và hiểu cách dùng JavaScript (fetch API) trên giao diện web để gửi yêu cầu đến Node-RED API, nhận dữ liệu JSON trả về và hiển thị kết quả lên giao diện.Tuy nhiên do bị lỗi máy và code lỗi em chưa khắc phục được nên chưa hoàn chỉnh được bài đúng yêu cầu
