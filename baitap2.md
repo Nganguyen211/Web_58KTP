@@ -155,11 +155,14 @@ Port: 1433
 
 Username: 
 
-Password: 123456
+Password: linh2112@
 
 DB_Name: qlhv_nodered
 
 Table_Name: HocVien, Lop, KetQua
+
+<img width="1014" height="645" alt="image" src="https://github.com/user-attachments/assets/1a2ec994-aab4-4853-be27-13714ffe910a" />
+
 
 2.4. Cài đặt thư viện trên nodered:
 
@@ -183,25 +186,25 @@ node-red-contrib-duckdns
 node-red-contrib-cron-plus
 
 <img width="1037" height="474" alt="image" src="https://github.com/user-attachments/assets/c96bd700-c85c-4901-8020-5c5f5e45bae9" />
+
  Cài đặt thành công các thư viện ✅
-- Cấu hình tài khoản đăng nhập (adminAuth) mở file E:\nodejs\nodered\work\settings.js tìm đến chỗ adminAuth, bỏ comment // ở đầu dòng (8 dòng), thay chuỗi mã hoá mật khẩu bằng chuỗi mới.
+ 
+- Cấu hình tài khoản đăng nhập (adminAuth) mở file D:\nodejs\nodered\work\settings.js tìm đến chỗ adminAuth, bỏ comment // ở đầu dòng (8 dòng), thay chuỗi mã hoá mật khẩu bằng chuỗi mới.
   <img width="1168" height="366" alt="image" src="https://github.com/user-attachments/assets/8dd4288a-bfb1-49e0-9f71-b22aa8979139" />
   <img width="986" height="216" alt="image" src="https://github.com/user-attachments/assets/fd1e6e8b-fdb3-429c-a85c-828482db9a5c" />
- Truy cập tool: https://tms.tnut.edu.vn/pw.php ➡️ Nhập password: chuoimahoamatkhau vào ô và click Hash Password ➡️ Copy chuỗi mã hóa dán vào chỗ "chuoi_ma_hoa_mat_khau" và lưu file.
+  
+ - Truy cập tool: https://tms.tnut.edu.vn/pw.php ➡️ Nhập password: chuoimahoamatkhau vào ô và click Hash Password ➡️ Copy chuỗi mã hóa dán vào chỗ "chuoi_ma_hoa_mat_khau" và lưu file.
 
-<img width="1160" height="361" alt="image" src="https://github.com/user-attachments/assets/d94a68e5-e488-42ff-bbb0-62a5da0cb017" />
-- Khởi động lại Node-RED bằng cách: mở cmd, vào thư mục E:\nodejs\nodered và chạy lệnh nssm restart a1-nodered
-<img width="1100" height="261" alt="image" src="https://github.com/user-attachments/assets/d33f7943-a35b-4104-800f-6f72435998ee" />
+<img width="838" height="282" alt="image" src="https://github.com/user-attachments/assets/225b8151-7cec-458e-8453-1450baebbf5a" />
+
+- Khởi động lại Node-RED bằng cách: mở cmd, vào thư mục D:\nodejs\nodered và chạy lệnh nssm restart a1-nodered
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4c624f94-5535-461e-9a03-6a56876ecb67" />
+
 - Lúc này Node-RED sẽ yêu cầu đăng nhập bằng user admin và password mới vào được giao diện cho admin tại: http://localhost:1880
-![Uploading image.png…]()
-
-
-
-2.5 và 2.6 do máy chậm code bị lỗi bị sập máy nên chưa kịp khắc phục và bổ sung hoàn thành em sẽ hoàn thành nhanh chóng mong thầy thông cảm ạ 
 
 2.5. tạo api back-end bằng nodered:
 
-Tạo API tìm kiếm nhà nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
+Tạo API tìm kiếm học  nhận tham số từ url trả về json http://localhost:1880/timkiem?q=chung
 
 Khi gọi, Node-RED sẽ truy vấn bảng Hocvien trong SQL Server
 
@@ -212,6 +215,10 @@ Trên Nodered, ở flow 1 sử dụng http in và http response để tạo api
 Thêm node MSSQL để kết nối và truy vấn tới cơ sở dữ liệu
 
 Logic Flow sẽ gồm 4 node sau (thứ tự nối dây):
+
+<img width="1785" height="973" alt="image" src="https://github.com/user-attachments/assets/c37bbcb0-c8d2-40f5-b843-d2a8faac1b6e" />
+
+<img width="769" height="699" alt="image" src="https://github.com/user-attachments/assets/1b3c479b-e0bd-4986-84e8-44dd2f3ff93c" />
 
 2.7. Nhận xét bài làm của mình:
  * Qua quá trình thực hiện bài tập này, em đã hiểu rõ hơn về quy trình cài đặt, cấu hình và tích hợp các thành phần trong một hệ thống web hoàn chỉnh.
