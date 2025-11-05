@@ -76,4 +76,29 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install docker.io docker-compose -y
 sudo usermod -aG docker $USER
 Rồi khởi động lại WSL.
+
+Sau đó mở Docker ktop có sẵn trên máy
+
 2. FILE docker-compose.yml
+   
+ Tạo D:/nguyenthihangnga_web/docker-compose.yml
+ 
+ D:/nguyenthihangnga_web/nginx/conf.d/nguyenthihangnga.com.conf
+
+# CẤU HÌNH HOSTS (Windows)
+Mở Notepad as Admin → sửa file:
+
+C:\Windows\System32\drivers\etc\hosts
+
+127.0.0.1 nguyenthihangnga.com
+
+<img width="866" height="733" alt="image" src="https://github.com/user-attachments/assets/4bddddbd-1fee-4580-8ea3-d46fb03df7ea" />
+
+3. Sử dụng 1 file docker-compose.yml để cài đặt các docker container sau: 
+   mariadb (3306), phpmyadmin (8080), nodered/node-red (1880), influxdb (8086), grafana/grafana (3000), nginx (80,443)
+ # KHỞI ĐỘNG HỆ THỐNG
+
+ docker-compose up -d
+
+ <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/03f90d88-88a2-4405-a350-a413b97303d2" />
+
