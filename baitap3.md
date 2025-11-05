@@ -71,10 +71,14 @@ wsl --install -d Ubuntu
 
 <img width="1920" height="1080" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/48f7094e-5786-4a8d-b58b-28383f75f9f9" />
 
-Sau khi cài xong, chạy:
+# Sau khi cài xong, chạy:
+
 sudo apt update && sudo apt upgrade -y
+
 sudo apt install docker.io docker-compose -y
+
 sudo usermod -aG docker $USER
+
 Rồi khởi động lại WSL.
 
 Sau đó mở Docker ktop có sẵn trên máy
@@ -101,4 +105,7 @@ C:\Windows\System32\drivers\etc\hosts
  docker-compose up -d
 
  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/03f90d88-88a2-4405-a350-a413b97303d2" />
+
+4.1 Web thương mại điện tử
+
 
