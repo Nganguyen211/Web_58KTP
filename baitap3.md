@@ -121,9 +121,125 @@ http://localhost:3000 → Grafana
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/56006b76-c8db-4fb6-b6a8-85d2f4a0cc18" />
 
-http://localhost →Website (nginx)
+
+ 4.2 Web IOT: Giám sát dữ liệu IOT.
+ 
+ # Tạo cơ sở dữ liệu MariaDB
+ 
+# 1 Mở phpMyAdmin:
+ 
+Mở trình duyệt → vào:
+
+http://localhost:8080
+
+Đăng nhập:
+
+Username: root
+
+Password: 123456
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/3c3af39b-60fc-430b-9251-5597b5b2f438" />
+# 2 Tạo bảng dữ liệu
+
+Chọn database iotdb → tab SQL
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0bfc689c-4c78-42ba-92ec-b080bfb34470" />
+
+Bấm Go
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4fc61b37-eaf1-4b6d-9703-87c4fca9bee8" />
+
+# 3 CẤU HÌNH NODERED
+
+1️⃣ Mở Node-RED:
+
+Mở trình duyệt → vào:
+
+http://localhost:1880
+
+2️⃣ Kết nối đến database
+
+Vào menu Manage palette → Install, tìm node-red-node-mysql → cài đặt.
+
+Kéo node MySQL ra.
+
+Nhấn đúp → tạo server config:
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/563e36ac-9133-4301-98be-577119e4bd3b" />
+
+Test conect--> success
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/f8d169d5-6996-4aa0-af83-fcb8e2816a91" />
+
+# 4 CHO NODERED GUI DỮ LIỆU GIẢ LẬP VÀO DATABASE
+
+Trong Node-RED, tạo flow đơn giản:
+
+1. Node Inject (tự động gửi mỗi 5 giây)
+
+2. Node Function với code:
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/8a88f292-c326-488b-9618-73e1033af644" />
 
 
-4.1 Web thương mại điện tử
+3. Nối vào MySQL node (đã cấu hình).
+→ Deploy V
+Kết quả: mỗi 5 giây, 1 dòng dữ liệu được thêm vào bảng sensors .
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/6aa8e72c-0537-424e-bda5-3d95e55e0b31" />
+
+# 5 HIÊN THỊ DỮ LIỆU
+1 TRÊN GRAFANA
+• Mở Grafana:
+arduino
+http://localhost:3000
+
+Đăng nhập:
+
+Username: admin
+
+Password: admin123
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/97ad131a-88ba-45e3-9491-17f3215c01e0" />
+
+Đổi mật khẩu khi yêu cầu.
+
+2 Thêm Data Sourcue
+
+Chọn Connection → Data Sources → Add data source
+
+• Chọn InfluxDB
+
+• URL: http://influxdb:8086
+
+• Database: iotdb
+
+• Save & Test V
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/2dbfe8ee-61f2-41c5-8e49-f35b23085287" />
+
+
+3 Tạo Dashboard
+• Add panel → chọn dữ liệu từ InfluxDB
+<img width="1920" height="1020" alt="Screenshot 2025-11-06 124435" src="https://github.com/user-attachments/assets/50740262-ff0a-445c-8784-529a212deea2" />
+
+TẠO PANEL MỚI
+
+Nhấn nút + Add visualization (giữa màn hình)
+<img width="1920" height="1020" alt="Screenshot 2025-11-06 124435" src="https://github.com/user-attachments/assets/30953526-2d72-45bf-b9b0-9700373106a0" />
+
+Chọn Data source: InfluxDB (cái bạn đã kết nối thành công)
+<img width="1920" height="1020" alt="Screenshot 2025-11-06 124628" src="https://github.com/user-attachments/assets/f3736483-d40f-4e6c-8783-e22b03fea09b" />
+
+CHỌN LOẠI BIỂU ĐỒ
+Bên phải → Visualization → Chọn: Time series
+
+LƯU DASHBOARD
+
+Nhấn Apply (góc trên phải)
+
+Nhấn Save dashboard (biểu tượng đĩa)
+
+Đặt tên: iotdb
+
+Nhấn Save
+
+GỬI DỮ LIỆU MẪU TỪ NODE-RED (ĐỂ THẤY BIỂU ĐỒ SỐNG)
+1. Mở Node-RED: http://localhost:1880
+2. Dán flow này (copy → Menu → Import)
+
 
 
