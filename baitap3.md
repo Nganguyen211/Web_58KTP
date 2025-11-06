@@ -41,9 +41,7 @@ Yêu cầu     : LẬP TRÌNH ỨNG DỤNG WEB trên nền linux
    nodered sẽ lưu dữ liệu (insert) vào influxdb để lưu giá trị lịch sử, để cho grafana dùng để hiển thị biểu đồ.
 5. Nginx làm web-server
  - Cấu hình nginx để chạy được website qua url http://fullname.com  (thay fullname bằng chuỗi ko dấu viết liền tên của bạn)
- - Cấu hình nginx để http://fullname.com/nodered truy cập vào nodered qua cổng 80, (dù nodered đang chạy ở port 1880)
- - Cấu hình nginx để http://fullname.com/grafana truy cập vào grafana qua cổng 80, (dù grafana đang chạy ở port 3000)
-
+ -55
 Yêu cầu sinh viên lưu code trên github
 có file readme.md có hình ảnh + text: ghi lại nhật ký quá trình làm bài.
 
@@ -145,45 +143,40 @@ Chọn database iotdb → tab SQL
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0bfc689c-4c78-42ba-92ec-b080bfb34470" />
 
 Bấm Go
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4fc61b37-eaf1-4b6d-9703-87c4fca9bee8" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-06 214432" src="https://github.com/user-attachments/assets/9f4e9e22-5071-4521-9dc7-f9bcafcc5d28" />
 
-# 3 CẤU HÌNH NODERED
-
-1️⃣ Mở Node-RED:
-
-Mở trình duyệt → vào:
-
-http://localhost:1880
-
-2️⃣ Kết nối đến database
-
-Vào menu Manage palette → Install, tìm node-red-node-mysql → cài đặt.
-
-Kéo node MySQL ra.
-
-Nhấn đúp → tạo server config:
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/563e36ac-9133-4301-98be-577119e4bd3b" />
-
-Test conect--> success
-
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/f8d169d5-6996-4aa0-af83-fcb8e2816a91" />
-
-# 4 CHO NODERED GUI DỮ LIỆU GIẢ LẬP VÀO DATABASE
-
-Trong Node-RED, tạo flow đơn giản:
-
-1. Node Inject (tự động gửi mỗi 5 giây)
-
-2. Node Function với code:
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/8a88f292-c326-488b-9618-73e1033af644" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-06 214418" src="https://github.com/user-attachments/assets/b1a740f9-d797-4acf-80a7-d241d59dbb93" />
 
 
-3. Nối vào MySQL node (đã cấu hình).
+# 3 CẤU HÌNH NODERED và CHO NODERED GUI DỮ LIỆU GIẢ LẬP VÀO DATABASE
+
+(chưa kết nối được nodered với database nên chưa lấy được dữ liệu do lỗi hệ thống em chưa biết cách khắc phục)
+
+Cài Node MySQL (Nếu chưa cài)
+
+Trong cửa sổ Manage Palette (nơi bạn vừa cài InfluxDB), tìm kiếm node-red-node-mysql (Nếu bạn chưa cài) và bấm Install.
+
+mport và Deploy Flow
+
+Đóng cửa sổ Manage Palette.
+
+Vào Menu (3 gạch ngang) -> Import -> Clipboard.
+
+Dán code JSON từ file D:/nguyenthihangnga_web/web/json.txt vào.
+
+Nhấn nút Deploy (màu đỏ) ở góc trên bên phải.
+
 → Deploy V
-Kết quả: mỗi 5 giây, 1 dòng dữ liệu được thêm vào bảng sensors .
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/6aa8e72c-0537-424e-bda5-3d95e55e0b31" />
 
-# 5 HIÊN THỊ DỮ LIỆU
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/06243d53-03a6-47e7-8d9e-44f35c959215" />
+
+
+<img width="1920" height="754" alt="image" src="https://github.com/user-attachments/assets/f8fba270-7638-47c6-b07f-c0c81dbab5ae" />
+
+# 4 HIỂN THỊ DỮ LIỆU
+
+(chưa kết nối được nodered nên chưa lấy được dữ liệu vẽ biểu đồ do lỗi hệ thống em chưa biết cách khắc phục)
+
 1 TRÊN GRAFANA
 • Mở Grafana:
 arduino
@@ -209,7 +202,7 @@ Chọn Connection → Data Sources → Add data source
 • Database: iotdb
 
 • Save & Test V
-<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/2dbfe8ee-61f2-41c5-8e49-f35b23085287" />
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/d26139a3-33e1-4a16-8c2c-cceb252c6a84" />
 
 
 3 Tạo Dashboard
@@ -222,7 +215,6 @@ Nhấn nút + Add visualization (giữa màn hình)
 <img width="1920" height="1020" alt="Screenshot 2025-11-06 124435" src="https://github.com/user-attachments/assets/30953526-2d72-45bf-b9b0-9700373106a0" />
 
 Chọn Data source: InfluxDB (cái bạn đã kết nối thành công)
-<img width="1920" height="1020" alt="Screenshot 2025-11-06 124628" src="https://github.com/user-attachments/assets/f3736483-d40f-4e6c-8783-e22b03fea09b" />
 
 CHỌN LOẠI BIỂU ĐỒ
 Bên phải → Visualization → Chọn: Time series
@@ -238,8 +230,24 @@ Nhấn Save dashboard (biểu tượng đĩa)
 Nhấn Save
 
 GỬI DỮ LIỆU MẪU TỪ NODE-RED (ĐỂ THẤY BIỂU ĐỒ SỐNG)
-1. Mở Node-RED: http://localhost:1880
-2. Dán flow này (copy → Menu → Import)
 
+1. Mở Node-RED: http://localhost:1880
+
+2. Dán flow này (copy → Menu → Import)
+   
+# Frondend
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/1fef8580-8b83-44a0-a97f-2d06c7055a52" />
+
+5 Cấu hình nginx
+
+- Cổng 80 trên Windows thường bị khóa và chiếm dụng bởi các dịch vụ mặc định của hệ thống (như World Wide Web Publishing Service hoặc IIS), ngay cả khi chạy Docker với quyền Administrator.Để đảm bảo ứng dụng chạy được mà không cần tắt các dịch vụ hệ thống của Windows, em đã phải điều chỉnh cấu hình Volume trong docker-compose.yml để map cổng dự phòng:Chuyển Nginx từ cổng 80 sang cổng 81.
+
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/9ad7194d-8f1c-4926-b331-7c079fac46fc" />
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/1fef8580-8b83-44a0-a97f-2d06c7055a52" />
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/4670d5f8-7dfd-48ad-aacb-7f6ffaffc0f4" />
 
 
