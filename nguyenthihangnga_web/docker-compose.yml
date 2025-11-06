@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: iotdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123456
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: 123456
+
+  nodered:
+    image: nodered/node-red:latest
+    restart: always
+    volumes:
+      - nodered_data:/data
+    ports:
+      - "1880:1880"
+
+  influxdb:
+    image: influxdb:1.8
+    restart: always
+    environment:
+      INFLUXDB_DB: iotdb
+      INFLUXDB_ADMIN_ENABLED: "true"
+      INFLUXDB_ADMIN_USER: admin
+      INFLUXDB_ADMIN_PASSWORD: admin123
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    ports:
+      - "8086:8086"
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_SERVER_ROOT_URL
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    depends_on:
+      - nodered
+      - grafana
+    ports:
+      - "81:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./web:/var/www/html
+
+volumes:
+  mariadb_data:
+  nodered_data:
+  influxdb_data:
+  grafana_data:

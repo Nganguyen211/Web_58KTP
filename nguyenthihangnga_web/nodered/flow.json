@@ -1,0 +1,180 @@
+[
+    {
+        "id": "76973e21.611e98",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e67b2d5d.a2b4b4",
+        "type": "inject",
+        "z": "76973e21.611e98",
+        "name": "Giả lập data 5s",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "e57c8d9d.611b8"
+            ]
+        ]
+    },
+    {
+        "id": "e57c8d9d.611b8",
+        "type": "function",
+        "z": "76973e21.611e98",
+        "name": "Tạo Dữ Liệu & Tách Flow",
+        "func": "// 1. Tạo dữ liệu giả lập\nconst temp = (Math.random() * 10 + 20).toFixed(2); // Nhiệt độ 20 - 30\nconst humi = (Math.random() * 30 + 50).toFixed(2); // Độ ẩm 50 - 80\n\n// 2. Payload cho MariaDB (Lệnh UPDATE HOÀN CHỈNH - Không dùng dấu ?)\nconst mariaDbTopic = `UPDATE sensors SET temp = ${temp}, humi = ${humi} WHERE id = 1`;\n\n// 3. Payload cho InfluxDB\nconst influxPayload = {\n    measurement: \"sensor_data\",\n    fields: {\n        temperature: parseFloat(temp),\n        humidity: parseFloat(humi)\n    },\n    tags: {\n        location: \"lab\"\n    }\n};\n\n// 4. Trả về 2 nhánh (Đảm bảo Node Function có 2 Outputs)\nreturn [ \n    { topic: mariaDbTopic }, // Nhánh 1: MariaDB (chỉ cần topic SQL)\n    { payload: influxPayload } // Nhánh 2: InfluxDB\n];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [
+                "2f8c5c7d.e0257c"
+            ],
+            [
+                "61b4760a.7077a"
+            ]
+        ]
+    },
+    {
+        "id": "2f8c5c7d.e0257c",
+        "type": "mysql",
+        "z": "76973e21.611e98",
+        "mydb": "f320b9e8.1884a",
+        "name": "MariaDB - Cập nhật MỚI NHẤT",
+        "x": 610,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "61b4760a.7077a",
+        "type": "influxdb out",
+        "z": "76973e21.611e98",
+        "influxdb": "771e899b.7d716",
+        "name": "InfluxDB - Lưu Lịch Sử",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "precisionV2": "",
+        "org": "",
+        "bucket": "",
+        "x": 600,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "f5e937d5.0c03c",
+        "type": "http in",
+        "z": "76973e21.611e98",
+        "name": "",
+        "method": "get",
+        "url": "/api/latest-iot-data",
+        "user": "adminnga",
+        "pass": "5f4dcc3b5aa765d61d8327deb882cf99",
+        "security": true,
+        "x": 100,
+        "y": 250,
+        "wires": [
+            [
+                "c0b1a03f.621b18"
+            ]
+        ]
+    },
+    {
+        "id": "c0b1a03f.621b18",
+        "type": "mysql",
+        "z": "76973e21.611e98",
+        "mydb": "f320b9e8.1884a",
+        "name": "MariaDB - Lấy MỚI NHẤT",
+        "x": 380,
+        "y": 250,
+        "wires": [
+            [
+                "46a8d3b.812328"
+            ]
+        ]
+    },
+    {
+        "id": "46a8d3b.812328",
+        "type": "function",
+        "z": "76973e21.611e98",
+        "name": "Chuẩn bị JSON",
+        "func": "// Chuyển đổi payload thành JSON để gửi về frontend\n// Kiểm tra nếu có kết quả (rows) từ database\nif (msg.payload && Array.isArray(msg.payload)) {\n    msg.payload = msg.payload; // Gửi thẳng array kết quả\n} else {\n    msg.payload = [];\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 300,
+        "wires": [
+            [
+                "f7d1c68f.a4e8d"
+            ]
+        ]
+    },
+    {
+        "id": "f7d1c68f.a4e8d",
+        "type": "http response",
+        "z": "76973e21.611e98",
+        "name": "Gửi JSON Response",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 780,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "f320b9e8.1884a",
+        "type": "MySQLdatabase",
+        "name": "MariaDB_IoT",
+        "host": "mariadb",
+        "port": "3306",
+        "db": "iotdb",
+        "tz": "hh:mm",
+        "charset": "UTF8"
+    },
+    {
+        "id": "771e899b.7d716",
+        "type": "influxdb",
+        "hostname": "influxdb",
+        "port": "8086",
+        "protocol": "http",
+        "database": "iotdb",
+        "name": "InfluxDB Config",
+        "usetls": false,
+        "apiToken": "",
+        "org": "",
+        "bucket": "",
+        "ver": "1.x"
+    }
+]
+
+

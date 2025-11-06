@@ -1,0 +1,42 @@
+server {
+    listen 80;
+    server_name nguyenthihangnga.com;
+
+    root /var/www/html;
+    index index.html;
+
+    # 1. Cấu hình Website chính (SPA)
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # 2. Cấu hình truy cập Node-RED
+    location /nodered/ {
+        # Đảm bảo Node-RED nhận đúng Host và WebSocket
+        proxy_pass http://nodered:1880/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+
+    # 3. Cấu hình truy cập Grafana (Fix Rewrite và Proxy Buffering)
+    location /grafana/ {
+        # Tắt buffering để xử lý các yêu cầu streaming/polling của Grafana
+        proxy_buffering off;
+        proxy_request_buffering off;
+        proxy_http_version 1.1;
+
+        proxy_pass http://grafana:3000/;
+        proxy_set_header Host $host;
+        
+        # Lệnh Rewrite: Xóa /grafana/ khỏi đường dẫn trước khi gửi đến Grafana
+        rewrite ^/grafana/(.*)$ /$1 break;
+    }
+
+    # Cấu hình PHPMyAdmin
+    location /phpmyadmin/ {
+        proxy_pass http://phpmyadmin:80/;
+        proxy_set_header Host $host;
+    }
+}
