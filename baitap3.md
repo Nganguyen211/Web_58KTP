@@ -98,13 +98,31 @@ C:\Windows\System32\drivers\etc\hosts
 
 <img width="866" height="733" alt="image" src="https://github.com/user-attachments/assets/4bddddbd-1fee-4580-8ea3-d46fb03df7ea" />
 
-3. Sử dụng 1 file docker-compose.yml để cài đặt các docker container sau: 
+3. Sử dụng 1 file docker-compose.yml để cài đặt các docker container sau:
+   
    mariadb (3306), phpmyadmin (8080), nodered/node-red (1880), influxdb (8086), grafana/grafana (3000), nginx (80,443)
  # KHỞI ĐỘNG HỆ THỐNG
 
  docker-compose up -d
 
  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/03f90d88-88a2-4405-a350-a413b97303d2" />
+
+Truy cập để kiểm tra 
+
+http://localhost:8080 → phpMyAdmin
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a5c17bc6-2514-4310-92d6-1d8f61593817" />
+
+http://localhost:1880 → Node-RED
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c3e470ca-b45f-4085-9bce-ca5b129530de" />
+
+http://localhost:3000 → Grafana
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/56006b76-c8db-4fb6-b6a8-85d2f4a0cc18" />
+
+http://localhost →Website (nginx)
+
 
 4.1 Web thương mại điện tử
 
